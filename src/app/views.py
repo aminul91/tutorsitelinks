@@ -1,4 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
+import requests
+from rest_framework.views import APIView
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from app.serializers import *
 from app.models import user_info,tutorial_type,language_type,links_db,suggestion
 
 def home_view(request):
@@ -28,3 +33,18 @@ def tutor_topic(request):
     print(type_val_info)
     context["data_view"].append({"type_val": type_val_info,"tutor_data":data_r})
     return render(request, "app/tutorials.html",context)
+
+@api_view(['GET'])
+def tutorials_links(request):
+    data_r = links_db.objects.all()
+    serial_data = linksSerializer(data_r,many = True)
+    return Response(serial_data.data)
+
+def api_links(request):
+    response_links= requests.get("http://localhost:8000/tutorials/").json()
+    context = { 
+               "data_view" : []
+               
+        }
+    context["data_view"].append({"response": response_links})
+    return render(request, "app/api_links.html",context)
