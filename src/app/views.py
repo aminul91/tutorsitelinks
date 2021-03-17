@@ -41,7 +41,7 @@ def tutorials_links(request):
     return Response(serial_data.data)
 
 def api_links(request):
-    response_links= requests.get("http://localhost:8000/tutorials/").json()
+    response_links= requests.get("https://tutorsitelinks.herokuapp.com/tutorials/").json()
     context = { 
                "data_view" : []
                
