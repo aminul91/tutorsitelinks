@@ -21,4 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app.urls', namespace='app')),
     path('tutorials/', views.tutorials_links),
+    path('tutorials/<str:username>/', views.values),
+    path('tutorials/<str:language>/<str:tutorial>', views.values_double),
 ]

@@ -48,3 +48,26 @@ def api_links(request):
         }
     context["data_view"].append({"response": response_links})
     return render(request, "app/api_links.html",context)
+
+@api_view(['GET'])
+def values(request,username):
+    print(username)
+    username=str(username)
+    data_r = language_type.objects.filter(language_name=username)
+    print("pp")
+    for req in data_r:
+        print(req.language_name)
+        num=int(req.language_value)
+    links_r = links_db.objects.filter(language_value=num)
+    serial_data = linksSerializer(links_r,many = True)
+    return Response(serial_data.data)
+
+def values_double(request,language,tutorial):
+    print(language)
+    print(tutorial)
+    context = { 
+               "data_view" : []
+               
+        }
+    context["data_view"].append({"language": language,"tutorial": tutorial})
+    return render(request, "app/message.html",context)
