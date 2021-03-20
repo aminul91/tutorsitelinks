@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from app.serializers import *
-from app.models import user_info,tutorial_type,language_type,links_db,suggestion
+from app.models import *
 
 def home_view(request):
     data_r = tutorial_type.objects.all()  
@@ -25,7 +25,7 @@ def tutor_topic(request):
     if request.method == "POST":
         type_val_info = request.POST.get('type_val')
         type_val_info = int(type_val_info)
-    data_r = links_db.objects.filter(type_value = type_val_info)
+    data_r = tutorials_path.objects.filter(type_value = type_val_info)
     context = { 
                "data_view" : []
                
@@ -36,7 +36,7 @@ def tutor_topic(request):
 
 @api_view(['GET'])
 def tutorials_links(request):
-    data_r = links_db.objects.all()
+    data_r = tutorials_path.objects.all()
     serial_data = linksSerializer(data_r,many = True)
     return Response(serial_data.data)
 
@@ -58,7 +58,7 @@ def values(request,username):
     for req in data_r:
         print(req.language_name)
         num=int(req.language_value)
-    links_r = links_db.objects.filter(language_value=num)
+    links_r = tutorials_path.objects.filter(language_value=num)
     serial_data = linksSerializer(links_r,many = True)
     return Response(serial_data.data)
 

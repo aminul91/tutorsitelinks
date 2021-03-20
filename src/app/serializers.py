@@ -4,5 +4,5 @@ from app.models import *
 
 class linksSerializer(serializers.ModelSerializer):
     class Meta:
-        model = links_db
+        model = tutorials_path
         fields = '__all__'
