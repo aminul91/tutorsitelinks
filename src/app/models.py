@@ -25,6 +25,7 @@ class links_db(models.Model):
     links_path = models.CharField(max_length=300,default="")
     links_val = models.IntegerField(default=0,primary_key = True)
     type_value = models.ForeignKey(tutorial_type, on_delete=models.CASCADE)
+    type_name_links = models.CharField(max_length=50,default="")
     language_value = models.ForeignKey(language_type, on_delete=models.CASCADE)
     language_name = models.CharField(max_length=50,default="")
     def __str__(self):
