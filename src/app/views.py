@@ -41,7 +41,7 @@ def tutorials_links(request):
     return Response(serial_data.data)
 
 def api_links(request):
-    response_links= requests.get("https://tutorsitelinks.herokuapp.com/tutorials/").json()
+    response_links= ""
     context = { 
                "data_view" : []
                
@@ -51,9 +51,10 @@ def api_links(request):
 
 @api_view(['GET'])
 def values(request,username):
+    num=0
     print(username)
     username=str(username)
-    data_r = language_type.objects.filter(language_name=username)
+    data_r = language_types.objects.filter(language_name=username)
     print("pp")
     for req in data_r:
         print(req.language_name)
@@ -71,3 +72,4 @@ def values_double(request,language,tutorial):
         }
     context["data_view"].append({"language": language,"tutorial": tutorial})
     return render(request, "app/message.html",context)
+
