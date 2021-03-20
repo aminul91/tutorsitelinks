@@ -33,7 +33,8 @@ class tutorials_paths(models.Model):
     links_path = models.CharField(max_length=300,blank=True)
     links_val = models.IntegerField(default=0,primary_key = True)
     type_value = models.ForeignKey(tutorial_type, on_delete=models.CASCADE)
+    categ_name = models.CharField(max_length=100,blank=True)
     language_value = models.ForeignKey(language_type, on_delete=models.CASCADE)
-
+    language_type = models.CharField(max_length=100,blank=True)
     def __str__(self):
         return self.links_path
