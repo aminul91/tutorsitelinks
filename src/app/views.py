@@ -7,7 +7,7 @@ from app.serializers import *
 from app.models import *
 
 def home_view(request):
-    data_r = tutorial_type.objects.all()  
+    data_r = tutorial_types.objects.all()  
 
     context = { 
 	"shumon" : []
