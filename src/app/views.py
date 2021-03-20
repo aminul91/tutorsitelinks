@@ -25,7 +25,7 @@ def tutor_topic(request):
     if request.method == "POST":
         type_val_info = request.POST.get('type_val')
         type_val_info = int(type_val_info)
-    data_r = tutorials_path.objects.filter(type_value = type_val_info)
+    data_r = tutorials_paths.objects.filter(type_value = type_val_info)
     context = { 
                "data_view" : []
                
@@ -36,7 +36,7 @@ def tutor_topic(request):
 
 @api_view(['GET'])
 def tutorials_links(request):
-    data_r = tutorials_path.objects.all()
+    data_r = tutorials_paths.objects.all()
     serial_data = linksSerializer(data_r,many = True)
     return Response(serial_data.data)
 
@@ -58,7 +58,7 @@ def values(request,username):
     for req in data_r:
         print(req.language_name)
         num=int(req.language_value)
-    links_r = tutorials_path.objects.filter(language_value=num)
+    links_r = tutorials_paths.objects.filter(language_value=num)
     serial_data = linksSerializer(links_r,many = True)
     return Response(serial_data.data)
 
