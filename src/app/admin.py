@@ -6,5 +6,5 @@ from .models import *
 admin.site.register(user_info)
 admin.site.register(tutorial_type)
 admin.site.register(language_type)
-admin.site.register(links_db)
+admin.site.register(tutorials_path)
 admin.site.register(suggestion)

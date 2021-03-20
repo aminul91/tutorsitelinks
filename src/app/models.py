@@ -20,16 +20,6 @@ class language_type(models.Model):
     def __str__(self):
         return self.language_name   
 
-class links_db(models.Model):
-    links_name = models.CharField(max_length=70,blank=True)
-    links_path = models.CharField(max_length=300,blank=True)
-    links_val = models.IntegerField(default=0,primary_key = True)
-    type_value = models.ForeignKey(tutorial_type, on_delete=models.CASCADE)
-    language_value = models.ForeignKey(language_type, on_delete=models.CASCADE)
-    lang_name=models.CharField(max_length=100,blank=True)
-    category_name=models.CharField(max_length=100,blank=True)
-    def __str__(self):
-        return self.links_path
 
 class suggestion(models.Model):
     suggestor_name = models.CharField(max_length=50,default="anonymous")
