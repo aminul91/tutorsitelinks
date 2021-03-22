@@ -13,7 +13,9 @@ def home_view(request):
 	"shumon" : []
 
 	}
-
+    domain = request.get_host()
+    domain="http://"+domain+"/tutorials/"
+    context["shumon"].append({"tutorial":data_r,"path_url":domain})
 
     context["shumon"].append({"tutorial":data_r})
 
@@ -40,13 +42,17 @@ def tutorials_links(request):
     serial_data = linksSerializer(data_r,many = True)
     return Response(serial_data.data)
 
+
 def api_links(request):
-    response_links= ""
     context = { 
                "data_view" : []
                
         }
-    context["data_view"].append({"response": response_links})
+    
+    domain = request.get_host()
+    domain="http://"+domain+"/tutorials/"
+    response = requests.get(domain).json()
+    context["data_view"].append({"response": response})
     return render(request, "app/api_links.html",context)
 
 @api_view(['GET'])
@@ -73,3 +79,7 @@ def values_double(request,language,tutorial):
     context["data_view"].append({"language": language,"tutorial": tutorial})
     return render(request, "app/message.html",context)
 
+def host_for_endpoint(request):
+    path_url =""
+    path_url = request.build_absolute_uri
+    return path_url
