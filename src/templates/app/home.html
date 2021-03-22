@@ -149,15 +149,23 @@
                    <div class="feature-thumb">
                         <span>tutorial-sitelink API</span>
                         <h4>Implemented with Django REST framework</h4>
-                        <p>Provide topic name and language to get the links of tutorial via REST API </p>
-                   </div>
+                        <p>Provide language name to get the links of tutorials of a specificlanguage </p>
+                        <p>Provide topic name and language to get the links of tutorials abouth the topic at specific language </p>
+                   </br>
+                        <p>Need to follow the APi format</p>
+                    </div>
               </div>
 
               <div class="col-md-4 col-sm-4">
                    <div class="feature-thumb">
                         <span>ENDPOINTS</span>
-                        <h3>Endpoints are given below</h3>
+                        <h4>Endpoints are given below</h4>
                         <a href="{{ shumon.0.path_url}}" target="blank"><p>{{ shumon.0.path_url}}</p></a>
+                        <p>{{ shumon.0.path_url_language}}</p>
+                        <p>{{ shumon.0.path_url_topic}}</p>
+                        <a href="{{ shumon.0.example1}}" ><p>Example 1(Language)</p></a>
+                        
+                       <p>Language topic and Topic name starts with capital example:English</p>
                    </div>
               </div>
 
@@ -165,7 +173,11 @@
                    <div class="feature-thumb">
                         <span>Client app</span>
                         <h3>Client app with DB</h3>
-                        <p>This application is working as client app for our API . The app is invoking data with REST API and showing output</p>
+                        <p>This application is working as client app for our API . </p>
+                        <p>The app is invoking data with REST API and showing output.</p>
+                    </br>
+               </br>
+          </br></br></br>
                    </div>
               </div>
          </div>

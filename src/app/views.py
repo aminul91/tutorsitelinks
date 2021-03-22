@@ -14,8 +14,11 @@ def home_view(request):
 
 	}
     domain = request.get_host()
-    domain="http://"+domain+"/tutorials/"
-    context["shumon"].append({"tutorial":data_r,"path_url":domain})
+    domain_all="http://"+domain+"/tutorials/"
+    domain_language="http://"+domain+"/tutorials/Language name"
+    domain_topic="http://"+domain+"/tutorials/Language name/Topic Name"
+    example1="http://"+domain+"/tutorials/English/"
+    context["shumon"].append({"tutorial":data_r,"path_url":domain_all,"path_url_language":domain_language,"path_url_topic":domain_topic,"example1":example1})
 
     context["shumon"].append({"tutorial":data_r})
 
