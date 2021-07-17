@@ -91,7 +91,7 @@
                    </div>
 
                    <div class="owl-carousel owl-theme owl-courses">
-                    {% for user in shumon %}
+                    {% for user in data_list %}
                     {% for tutor in user.tutorial %}
                         <div class="col-md-4 col-sm-4 " >
                              <div class="item ">
@@ -158,8 +158,8 @@
                    <div class="feature-thumb">
                         <span>ENDPOINTS</span>
                         <h3>Endpoints are given below</h3>
-                       <h6 > <a href="{{ shumon.0.path_url}}" target="blank">{{ shumon.0.path_url}}</a></h6>
-                       <h6 > {{ shumon.0.path_url_language}}</h6>
+                       <h6 > <a href="{{ data_list.0.path_url}}" target="blank">{{ data_list.0.path_url}}</a></h6>
+                       <h6 > {{ data_list.0.path_url_language}}</h6>
                        <h6>language name will be small letter</h6>
                     </div>
               </div>
@@ -182,35 +182,64 @@
     <div class="container">
          <div class="row">
 
-              <div class="col-md-6 col-sm-12">
-                   <form id="contact-form" role="form" action="" method="post">
-                        <div class="section-title">
-                             <h2>Provide us suggestion <small>Provide us suggestion so that we can improve out API!</small></h2>
-                        </div>
-
-                        <div class="col-md-12 col-sm-12">
-                             <input type="text" class="form-control" placeholder="Enter full name" name="name" required="">
-              
-                             <input type="email" class="form-control" placeholder="Enter email address" name="email" required="">
-
-                             <textarea class="form-control" rows="6" placeholder="Tell us about your message" name="message" required=""></textarea>
-                        </div>
-
-                        <div class="col-md-4 col-sm-12">
-                             <input type="submit" class="form-control" name="send message" value="Send Message">
-                        </div>
-
-                   </form>
+              <div class="col-md-6 col-sm-6">
+               <div id="piechart_3d" style="height: 400px;"></div>
               </div>
 
-              <div class="col-md-6 col-sm-12">
-                   <div class="contact-image">
-                        <img src="{% static "" %}app/img/image/contact-image.jpg" class="img-responsive" alt="Smiling Two Girls">
-                   </div>
+              <div class="col-md-6 col-sm-6">
+               <div id="myChart" style="height: 400px;"></div>
+              
               </div>
 
          </div>
     </div>
-</section>       
+</section>
+
+<script type="text/javascript">
+     google.charts.load("current", {packages:["corechart"]});
+     google.charts.setOnLoadCallback(drawChart);
+     function drawChart() {
+       var data = google.visualization.arrayToDataTable([
+         ['Tutorials type', 'Numbers'],
+         ['Programming',    2],
+         ['Cooking',      3],
+         ['Language',  1],
+         ['Web development', 1],
+       ]);
+
+       var options = {
+         title: 'Tutorials Type',
+         is3D: true,
+       };
+
+       var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+       chart.draw(data, options);
+     }
+   </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+     var qq = [
+     ['Language', 'Tutorials Numbers', {role: 'style'}],
+     ['English', 2, 'fill-color: gray; fill-opacity: 0.2'],
+     ['Deutsch', 2, 'fill-color: red; fill-opacity: 0.2'],
+     ['Italian', 1, 'fill-color: blue; fill-opacity: 0.2'],
+     ['Spanish', 2, 'stroke-color: #703593; fill-color: #C5A5CF'],
+     
+     ]
+     function drawChart() {
+     var data = google.visualization.arrayToDataTable(qq);
+
+        var options = {
+          title: 'Tutorial Language',
+          is3D: true,
+         
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('myChart'));
+        chart.draw(data, options);
+      }
+    </script>
 
 {% endblock content %}

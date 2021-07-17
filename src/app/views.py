@@ -17,15 +17,12 @@ class HomeView(TemplateView):
 
         #language_url = self.request.build_absolute_uri(reverse('language', args=("english")))
 
-        context['shumon'] = []
+        context['data_list'] = []
         domain = self.request.build_absolute_uri(reverse('tutorials'))
         
         domain_language=domain+"language"
-        #domain_topic="http://"+domain+"/tutorials/Language name/Topic Name"
-        #example1="http://"+domain+"/tutorials/English/"
-        #context["shumon"].append({"tutorial":data_r,"path_url":domain_all,"path_url_language":domain_language,"path_url_topic":domain_topic,"example1":example1})
-
-        context["shumon"].append({"tutorial":data_r,"path_url":domain,"path_url_language":domain_language})
+        chart2_data = []
+        context["data_list"].append({"tutorial":data_r,"path_url":domain,"path_url_language":domain_language,"Chart_t":chart2_data})
         return context
 
 class TopicView():
