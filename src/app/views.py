@@ -19,7 +19,7 @@ class HomeView(TemplateView):
         #language_url = self.request.build_absolute_uri(reverse('language', args=("english")))
 
         context['data_list'] = []
-        domain = self.request.build_absolute_uri(reverse('tutorials'))
+        domain = "https://linktutor.herokuapp.com/tutorials/"
         
         domain_language=domain+"language"
         chart2_data = []
