@@ -13,8 +13,9 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        data_r = tutorial_types.objects.all()  
-
+        response= requests.get('https://linktutor.herokuapp.com/tutorials/')  
+        data_r = response.json()
+        print(data_r)
         #language_url = self.request.build_absolute_uri(reverse('language', args=("english")))
 
         context['data_list'] = []
