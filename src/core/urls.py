@@ -21,7 +21,6 @@ from app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app.urls', namespace='app')),
-    path('tutorials/', views.ApiView.as_view(),name="tutorials"),
     path('tutorials/<str:username>/', views.ApiInfo.values, name="language"),
     #path('tutorials/<str:language>/<str:tutorial>', views.values_double),
 ]
