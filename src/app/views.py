@@ -91,8 +91,8 @@ def url_endpoint():
         with open("config/config.json") as json_file:
                 json_data = json.load(json_file)
                 if json_data is not None:
-                    domain = json_data["get_url"]
-                    domain_auth = json_data["other_operation_url"]
+                    domain = str(json_data["get_url"])
+                    domain_auth = str(json_data["other_operation_url"])
                     json_file.close()
                     return domain,domain_auth
                 else:
