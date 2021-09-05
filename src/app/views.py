@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
-import requests, untangle
+import requests, json
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -15,7 +15,10 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        domain,domain_auth_url = url_endpoint()
+        json_data={}
+        json_data = url_endpoint()
+        domain = json_data["get_url"]
+        domain_auth_url = json_data["other_operation_url"]
         response= requests.get(domain)  
         data_r = response.json()
         context['data_list'] = []
@@ -66,6 +69,7 @@ class ApiInfo():
         username=str(username)
         data_r = language_types.objects.filter(language_name=username)
         for req in data_r:
+            print(req.language_name)
             num=int(req.language_value)
         links_r = tutorials_paths.objects.filter(language_value=num)
         serial_data = linksSerializer(links_r,many = True)
@@ -86,10 +90,13 @@ def host_for_endpoint(request):
 
 def url_endpoint():
     try:
-        obj = untangle.parse('config/config.xml')
-        domain = obj.url.domain['name']
-        domain_auth = obj.url.domain_auth['name']
-        return domain,domain_auth
+        with open("config/config.json") as json_file:
+                json_data = json.load(json_file)
+                if json_data is not None:
+                    json_file.close()
+                    return json_data
+                else:
+                    print("json file is empty")
     except IOError:
         print("file not found")
 
