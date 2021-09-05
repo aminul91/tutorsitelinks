@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from app.serializers import *
-from app.models import *
+import config
 from django.views.generic.base import TemplateView
 from django.urls import reverse
 from rest_framework.permissions import IsAuthenticated
@@ -87,18 +87,6 @@ def host_for_endpoint(request):
     return path_url
 
 def url_endpoint():
-    try:
-        with open("config/config.json") as json_file:
-                json_data = json.load(json_file)
-                if json_data is not None:
-                    domain = str(json_data["get_url"])
-                    domain_auth = str(json_data["other_operation_url"])
-                    json_file.close()
-                    return domain,domain_auth
-                else:
-                    print("json file is empty")
-    except IOError:
-        print("file not found")
-
-    except ValueError:
-        print("No information from Config file")
+    domain = "https://linktutor.herokuapp.com/tutorials/"
+    domain_auth = "https://linktutor.herokuapp.com/tutorial_insert/"
+    return domain,domain_auth
