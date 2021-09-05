@@ -13,15 +13,14 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 class HomeView(TemplateView):
     template_name = "app/home.html"
 
-    def get_context_data(self):
-        #context = super().get_context_data(**kwargs)
-        domain,domain_auth_url = url_endpoint()
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        json_data = url_endpoint()
+        domain = json_data["get_url"]
+        domain_auth_url = json_data["other_operation_url"]
         response= requests.get(domain)  
         data_r = response.json()
-        context = { 
-               "data_list" : []
-               
-        }
+        context['data_list'] = []
         domain_language=domain+"language"
         chart2_data = []
         context["data_list"].append({"tutorial":data_r,"path_url":domain,"auth_url":domain_auth_url,"path_url_language":domain_language,"Chart_t":chart2_data})
@@ -93,10 +92,8 @@ def url_endpoint():
         with open("config/config.json") as json_file:
                 json_data = json.load(json_file)
                 if json_data is not None:
-                    domain_public = json_data["get_url"]
-                    domain_protected = json_data["other_operation_url"]
                     json_file.close()
-                    return domain_public,domain_protected
+                    return json_data
                 else:
                     print("json file is empty")
     except IOError:
