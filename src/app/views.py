@@ -16,9 +16,7 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         json_data={}
-        json_data = url_endpoint()
-        domain = json_data["get_url"]
-        domain_auth_url = json_data["other_operation_url"]
+        domain,domain_auth_url = url_endpoint()
         response= requests.get(domain)  
         data_r = response.json()
         context['data_list'] = []
@@ -93,8 +91,10 @@ def url_endpoint():
         with open("config/config.json") as json_file:
                 json_data = json.load(json_file)
                 if json_data is not None:
+                    domain = json_data["get_url"]
+                    domain_auth = json_data["other_operation_url"]
                     json_file.close()
-                    return json_data
+                    return domain,domain_auth
                 else:
                     print("json file is empty")
     except IOError:
