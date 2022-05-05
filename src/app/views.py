@@ -29,9 +29,8 @@ class TopicView():
     def tutor_topic(request):
         context = { 
                "data_view" : []
-               
         }
-        data_r=""
+        data_r = ""
         type_val_info=0
         if request.method == "POST":
             type_val_info = request.POST.get('type_val')

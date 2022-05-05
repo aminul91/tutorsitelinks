@@ -74,9 +74,9 @@
                    </div>
               </div>
 
-              <div class="col-md-offset-1 col-md-4 col-sm-12">
-                   <div class="entry-form" style="background-image: url('{% static "app/img/image/studentlearning.jpg" %}');">
-                    
+              <div class="col-md-offset-1 col-md-4 col-sm-12 " >
+                   <div class="entry-form col-12 col-sm-offset-3 col-md-offset-0 col-sm-4 col-md-6" style="background-image: url('{% static "app/img/image/studentlearning.jpg" %}');">
+                    <img href="" / >
                    </div>
               </div>
               
@@ -145,12 +145,14 @@
          
          <div class="row">
               <div class="col-md-12 col-sm-12">
-                   <div class="section-title" style="text-align: center;">
+                   <div class="section-title " style="text-align: center;">
                         <h2>API GUIDELINE <small style="color: blue;">User guideline for API</small></h2>
                    </div>
-              <div class="col-md-4 col-sm-4">
-                   <div class="feature-thumb">
-                        <span>Link Tutor API</span>
+              <div class=" col-12 col-md-4 ">
+                   <div class="feature-thumb col-12">
+                    <div class="col-12 apiGuidehead" >
+                        <h2 style="color: white;">Link Tutor API</h2>
+                    </div>
                         <h4>Implemented with Django REST framework</h4>
                         <p>Provide topic name and language to get the links of tutorial via REST API </p>
                         <p>For POST,PUT,DELETE operation Authentication token required </p>
@@ -158,9 +160,11 @@
                     </div>
               </div>
 
-              <div class="col-md-4 col-sm-4">
-                   <div class="feature-thumb">
-                        <span>ENDPOINTS</span>
+              <div class=" col-12 col-md-4 ">
+                   <div class="feature-thumb col-12">
+                    <div class="col-12 apiGuidehead" >
+                         <h2 style="color: white;">ENDPOINTS</h2>
+                     </div>
                         <h3>Endpoints are given below</h3>
                        <h6 > <a href="{{ data_list.0.path_url}}" target="blank">{{ data_list.0.path_url}}</a></h6>
                        <h6 > {{ data_list.0.path_url_language}}</h6>
@@ -170,9 +174,11 @@
                     </div>
               </div>
 
-              <div class="col-md-4 col-sm-4">
-                   <div class="feature-thumb">
-                        <span>Client app</span>
+              <div class="col-12 col-md-4 ">
+                   <div class="feature-thumb col-12">
+                    <div class="col-12 apiGuidehead" >
+                         <h2 style="color: white;">Client app</h2>
+                     </div>
                         <h3>Client app with DB</h3>
                         <p>This application works as client app for API</p>
                          <p>The app is invoking data with REST API and showing output with reporting</p>
@@ -187,19 +193,20 @@
 
 <section id="contact">
     <div class="container">
-     <div class="section-title" style="text-align: center;">
+     <div class="section-title">
           <h2>REPORTING <small style="color: white;"><b>Information about the tutorial links in this sites</b></small></h2>
      </div>
          <div class="row">
-          
-              <div class="col-md-6 col-sm-6">
-               <div id="piechart_3d" style="height: 400px;"></div>
+          <div class="col-12">
+              <div class="col-12 ">
+               <div id="piechart_3d" ></div>
               </div>
 
-              <div class="col-md-6 col-sm-6">
-               <div id="myChart" style="height: 400px;"></div>
+              <div class="col-12 ">
+               <div id="myChart" ></div>
               
               </div>
+          </div>
 
          </div>
     </div>
@@ -224,6 +231,8 @@
        var options = {
          title: 'Tutorials Type',
          is3D: true,
+         radius:50,
+         chartArea: {width: 400, height: 300},
        };
 
        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
@@ -235,7 +244,7 @@
       google.charts.load("current", {packages:["corechart"]});
       google.charts.setOnLoadCallback(drawChart);
      var qq = [
-     ['Language', 'Tutorials Numbers', {role: 'style'}],
+     ['Language', '', {role: 'style'}],
      ['English', 2, 'fill-color: gray; fill-opacity: 0.2'],
      ['Deutsch', 2, 'fill-color: red; fill-opacity: 0.2'],
      ['Italian', 1, 'fill-color: blue; fill-opacity: 0.2'],
@@ -246,7 +255,7 @@
      var data = google.visualization.arrayToDataTable(qq);
 
         var options = {
-          title: 'Tutorial Language',
+          title: 'Tutorial Number',
           is3D: true,
          
         };
