@@ -142,49 +142,69 @@
 <section id="feature">
          
     <div class="container">
-         
+     <div class="section-title " style="text-align: center;">
+          <h2>API GUIDELINE <small style="color: blue;">User guideline for API</small></h2>
+     </div>
          <div class="row">
-              <div class="col-md-12 col-sm-12">
-                   <div class="section-title " style="text-align: center;">
-                        <h2>API GUIDELINE <small style="color: blue;">User guideline for API</small></h2>
-                   </div>
-              <div class=" col-12 col-md-4 ">
-                   <div class="feature-thumb col-12">
+              <div class="col-md-12 col-sm-12" >
+                  
+              <div class=" col-12 col-md-4 " >
+                   <div class="feature-thumb col-12 column_p" >
                     <div class="col-12 apiGuidehead" >
                         <h2 style="color: white;">Link Tutor API</h2>
                     </div>
+                    <div class="buttonDiv">
                         <h4>Implemented with Django REST framework</h4>
+                    </div>
+                    <div class="buttonDiv">
                         <p>Provide topic name and language to get the links of tutorial via REST API </p>
-                        <p>For POST,PUT,DELETE operation Authentication token required </p>
-                       
+                    </div>
+                    <div class="buttonDiv">
+                        <p ">For POST,PUT,DELETE operation Authentication token required </p>
+                    </div>
                     </div>
               </div>
 
-              <div class=" col-12 col-md-4 ">
-                   <div class="feature-thumb col-12">
-                    <div class="col-12 apiGuidehead" >
-                         <h2 style="color: white;">ENDPOINTS</h2>
+              <div class=" col-12 col-md-4 " >
+                   <div class="feature-thumb col-12 column_p" >
+                    <div class="col-12 apiGuidehead divDesign" >
+                         <h2 style="color: white;" >Endpoints</h2>
                      </div>
-                        <h3>Endpoints are given below</h3>
-                       <h6 > <a href="{{ data_list.0.path_url}}" target="blank">{{ data_list.0.path_url}}</a></h6>
+                     <div class="buttonDiv divDesign" >
+                        <h3 style="font-size: 20px">Endpoints are given below</h3>
+                    </div>
+                        <div class="buttonDiv divDesign" >
+                       <h6 class="col-12"> <a href="{{ data_list.0.path_url}}" target="blank">{{ data_list.0.path_url}}</a></h6>
+                    </div>
+                       <div class="buttonDiv divDesign" >
                        <h6 > {{ data_list.0.path_url_language}}</h6>
+                    </div>
+                       <div class="buttonDiv divDesign" >
                        <h6 > <a href="{{ data_list.0.auth_url}}" target="blank">{{ data_list.0.auth_url}}</a></h6>
+                    </div>
+                    <div class="buttonDiv divDesign" >
                        <h5>Language name will be small letter here</h5>
                    </br>
+                     </div>
                     </div>
               </div>
 
-              <div class="col-12 col-md-4 ">
-                   <div class="feature-thumb col-12">
-                    <div class="col-12 apiGuidehead" >
-                         <h2 style="color: white;">Client app</h2>
-                     </div>
-                        <h3>Client app with DB</h3>
-                        <p>This application works as client app for API</p>
-                         <p>The app is invoking data with REST API and showing output with reporting</p>
-                    </br>  </br>             
-                    </div>
-              </div>
+              <div class=" col-12 col-md-4 " >
+               <div class="feature-thumb col-12 column_p" >
+                <div class="col-12 apiGuidehead divDesign" >
+                    <h2 style="color: white;">Client app</h2>
+                </div>
+                <div class="buttonDiv divDesign" >
+                    <h4>Client app with DB</h4>
+                </div>
+                <div class="buttonDiv divDesign">
+                    <p>This application works as client app for API </p>
+                </div>
+                <div class="buttonDiv divDesign">
+                    <p ">The app is invoking data with REST API and showing output with reporting </p>
+                </div>
+                </div>
+          </div>
          </div>
          </div>
     
@@ -198,7 +218,7 @@
      </div>
          <div class="row">
           <div class="col-12">
-              <div class="col-12 ">
+              <div class="col-12 " >
                <div id="piechart_3d" ></div>
               </div>
 

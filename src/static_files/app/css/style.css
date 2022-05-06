@@ -10,6 +10,45 @@
 .apiGuidehead{
     background-color: darkslateblue;
     text-align: center;
+    border-radius: 15px;
     
 }
 
+.buttonDiv{
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 3px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 2px;
+    margin: 2px 2px;
+    cursor: pointer;
+    style="width:300px"
+    
+}
+
+.buttonDiv p{
+    padding: 3px ;
+}
+
+
+.buttonDiv:active {
+    color: #666;
+    background-position: left -38px;
+  }
+  
+  .round {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+  }
+
+
+.column_p {
+    height:400px;
+}
+
+.divDesign{
+
+    width:300px;
+}
